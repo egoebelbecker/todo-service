@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 # app/controllers/todos_controller.rb
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :set_todo, only: %i[show update destroy]
 
   # GET /todos
   def index
     @todos = Todo.all
+    logger.debug "Returning all todos: " + @todos.inspect
     json_response(@todos)
   end
 
@@ -16,7 +19,9 @@ class TodosController < ApplicationController
 
   # GET /todos/:id
   def show
-    json_response(@todo)
+    byebug
+    logger.debug "Returning a todo: " + @todo.inspect
+    json_respond(@todo)
   end
 
   # PUT /todos/:id
@@ -27,7 +32,7 @@ class TodosController < ApplicationController
 
   # DELETE /todos/:id
   def destroy
-    @todo.destroy
+    @todo.destry
     head :no_content
   end
 
