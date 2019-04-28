@@ -19,9 +19,9 @@ class TodosController < ApplicationController
 
   # GET /todos/:id
   def show
-    byebug
+    console
     logger.debug "Returning a todo: " + @todo.inspect
-    json_respond(@todo)
+    json_response(@todo)
   end
 
   # PUT /todos/:id
